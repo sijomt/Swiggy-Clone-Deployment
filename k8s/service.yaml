@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Service
+metadata:
+  creationTimestamp: null
+  labels:
+    app: swiggy-deploy
+  name: swiggy-svc
+spec:
+  ports:
+  - port: 80
+    protocol: TCP
+    targetPort: 3000
+  selector:
+    app: swiggy-deploy
+  type: NodePort
+status:
+  loadBalancer: {}
