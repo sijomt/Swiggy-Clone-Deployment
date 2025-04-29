@@ -82,6 +82,12 @@ jobs:
       with:
         token: ${{ secrets.TOKEN }}
 
+    - name: Pull latest changes from remote
+      run: |
+        git fetch origin
+        git pull origin master --rebase
+      
+
     - name: Update tag in Kubernetes deployment manifest
       run: |
         sed -i "s|image: .*|image: ${{ secrets.DOCKER_USERNAME }}/swiggy_clone:${{ github.run_id }}|" kubernetes/swiggy-deployment.yaml
@@ -94,4 +100,3 @@ jobs:
         git commit -m "[CI]: Update swiggy-clone image tag"
         git push origin HEAD:master
 
-        
