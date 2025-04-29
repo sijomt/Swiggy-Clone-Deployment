@@ -24,7 +24,11 @@ jobs:
       run: npm test -- --watchAll=false --passWithNoTests
 
     - name: Build project
-      run: npm run build
+      run: CI=false npm run build
+      
+    - name: Update Browserslist DB
+      run: npx update-browserslist-db@latest
+    
 
   code-quality:
     runs-on: ubuntu-latest
