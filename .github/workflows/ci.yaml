@@ -98,5 +98,5 @@ jobs:
         git config --global user.name "sijomt"
         git add kubernetes/swiggy-deployment.yaml
         git commit -m "[CI]: Update swiggy-clone image tag"
-        git push origin HEAD:master
+        git push origin HEAD:master --force
 
